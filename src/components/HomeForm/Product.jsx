@@ -1,5 +1,6 @@
 import React from "react";
 import { MdNavigateNext } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Product(props) {
   return (
@@ -8,7 +9,7 @@ export default function Product(props) {
       <h2>{props.name}</h2>
       <p className="price">{props.price}</p>
       <p>
-        <button>Try It</button>
+      <Link to='/Ocassion'><button>It</button></Link>
       </p>
     </div>
   );
