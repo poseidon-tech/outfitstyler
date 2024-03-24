@@ -1,0 +1,28 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
+    margin-top: 20px;
+    background-color: #FAECEC; /* Example background color */
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px
+  }
+  
+  .home-content {
+    padding: 20px;
+  }
+  
+  .home-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .home-content p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
