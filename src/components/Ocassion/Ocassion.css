@@ -1,32 +1,56 @@
-.Ocassion
+.flipcards
 {
     display: flex;
     align-content: center;
     justify-content: space-evenly;
-    margin: 10% 8%;
+    margin-top:10%;
+    margin-left:5%;
+    margin-right:5%;
+
 }
-.cards {
-    display: flex ;
-    margin-left: 40px;
-    align-items: center; 
-  }
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 320px;
-    margin: auto 1rem;
-    text-align: center;
-    font-family: arial;
+.container
+{
+    width:300px;
+    height:400px;
+    perspective: 1000px;
+}
+.cardd{
+    height:100%;
+    width:100%;
+    box-shadow: 0 4px 8px 0 rgba(69, 61, 61, 0.2);
+    border: 5px solid white;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s;
+    transition: transform 1500ms;
     cursor: pointer;
 }
-img{
+
+.cardd:hover{
+    transform: rotateY(180deg)
+}
+.front,
+.back{
+    height:100%;
+    width:100%;
+    position:absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.front
+{
+    background-color:white
+}
+.back
+{
+    background-color:white;
+    transform: rotateY(180deg);
+}
+img {
     width: 100%;
     height: 16em;
     object-fit: contain;
-}
-
- 
-
-  
+  }
