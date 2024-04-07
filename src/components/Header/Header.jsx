@@ -33,7 +33,7 @@ function Header()
     return(
        
         <div className='navbar'>
-        <span className='website-name'>OutfitStyler<sub>.com</sub>
+        <span className='website-name'>OutitStyler<sub>.com</sub>
         </span>
         <span className='menu-icon' onClick={handleMenuToggle}>{isMenuOpen ? <IoIosCloseCircle size={30}/>:<GiHamburgerMenu size={30}/>}</span>
         <ul className={`navlinks ${isMenuOpen ? 'mobile' : ''}`} >
