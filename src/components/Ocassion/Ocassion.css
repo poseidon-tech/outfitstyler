@@ -54,3 +54,8 @@ img {
     height: 16em;
     object-fit: contain;
   }
+  a {
+    all: initial;
+    text-decoration: none;
+    color: inherit;
+  }

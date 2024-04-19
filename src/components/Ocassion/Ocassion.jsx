@@ -3,12 +3,14 @@ import image1 from './image-1.png'
 import image2 from './image-2.png'
 import image3 from './image-3.png'
 import image4 from './image-4.png'
+import { Link } from "react-router-dom";
 function Ocassion()
 {
  return(
    <div className= "flipcards">
+      <Link to="/Formal"> 
       <div className="container">
-         <div className="cardd">  
+         <div className="cardd"> 
             <div className="front">
             <h2>Formal events</h2>
             <img class = "img" src={image1}></img>
@@ -16,8 +18,11 @@ function Ocassion()
             <div className="back">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, a?</p>
             </div>
+         
          </div>
       </div>
+      </Link>
+      <Link to="/Casual"> 
       <div className="container">
          <div className="cardd">  
             <div className="front">
@@ -29,6 +34,8 @@ function Ocassion()
             </div>
          </div>
       </div>
+      </Link>
+      <Link to="/Social"> 
       <div className="container">
          <div className="cardd">  
             <div className="front">
@@ -40,6 +47,8 @@ function Ocassion()
             </div>
          </div>
       </div>
+      </Link>
+      <Link to="/Seasonal">
       <div className="container">
          <div className="cardd">  
             <div className="front">
@@ -51,6 +60,7 @@ function Ocassion()
             </div>
          </div>
       </div>
+      </Link>
    </div>
 
 
