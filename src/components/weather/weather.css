@@ -1,0 +1,31 @@
+.weather-forecast-box {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .weather-forecast-box h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .weather-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+  }
+  
+  .temperature, .weather {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .temperature {
+    font-weight: bold;
+  }
+  

@@ -4,9 +4,12 @@ import image2 from './image-2.png'
 import image3 from './image-3.png'
 import image4 from './image-4.png'
 import { Link } from "react-router-dom";
+import Calendar from '../Calendar/Calendar'
 function Ocassion()
 {
  return(
+   <div className="c1">
+   <Calendar/>
    <div className= "flipcards">
       <Link to="/Formal"> 
       <div className="container">
@@ -63,7 +66,7 @@ function Ocassion()
       </Link>
    </div>
 
-
+   </div>
  )
 }
 export default Ocassion
