@@ -12,6 +12,7 @@ import Seasonal from './components/Seasonal/Seasonal';
 import Casual from './components/Casual/Casual';
 import Accessory from './components/Accessory/Accessory';
 import CustomCalendar from './components/Calendar/Calendar';
+import Donation from './components/Donation/Donation';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
           <Route path="/Social" element={<Social/>}/>
           <Route path="/Accessory" element={<Accessory/>}/>
           <Route path="/Calendar" element={<CustomCalendar/>}/>
+          <Route path="/Donation" element={<Donation/>}/>
+
         </Routes>
       </BrowserRouter>
     </div>
