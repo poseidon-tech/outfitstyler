@@ -8,9 +8,11 @@ import Product from './Product';
 function Home(props) {
   const product = productData.map((item) => (
     <Product
+      key={item.id} // Unique key for each Product component
       name={item.name}
       url={item.imageurl}
       price={item.price}
+      urll={item.url}
     />
   ));
   const responsive = {

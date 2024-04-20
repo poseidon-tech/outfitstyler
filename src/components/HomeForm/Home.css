@@ -52,6 +52,23 @@
     object-fit: contain;
   }
 
-  
+  /* Formal.css */
+
+/* Add styles for the buttons */
+.flex-container .col1 button {
+  margin-bottom: 10px; /* Add some spacing between buttons */
+  padding: 10px 20px; /* Add padding for better appearance */
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+/* Add hover effect */
+.flex-container .col1 button:hover {
+  transform: scale(1.1); /* Scale up the button on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover for depth */
+}
+
   
   

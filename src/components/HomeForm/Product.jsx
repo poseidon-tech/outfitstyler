@@ -9,7 +9,7 @@ export default function Product(props) {
       <h2>{props.name}</h2>
       <p className="price">{props.price}</p>
       <p>
-      <Link to='/Ocassion'><button>It</button></Link>
+      <Link to={props.urll}><button>Try It</button></Link>
       </p>
     </div>
   );
