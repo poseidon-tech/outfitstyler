@@ -6,6 +6,9 @@ import Register from './components/RegisterForm/Register';
 import Home from './components/HomeForm/Home'
 import Header from './components/Header/Header';
 import Ocassion from './components/Ocassion/Ocassion';
+import ClosetMatching from './components/Closet Matching/closet matching';
+import ImageGallery from './components/ImageGallery/imagegallery';
+
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
           <Route path="/Login" element={<Login />}/>
           <Route path="/Home" element={<Home />}/>    
           <Route path="/Ocassion" element={<Ocassion />}/> 
+          <Route path="/ClosetMatching" element={<ClosetMatching />}/>
+          <Route path="/ImageGallery" element={<ImageGallery />} />
         </Routes>
       </BrowserRouter>
     </div>

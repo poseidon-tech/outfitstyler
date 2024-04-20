@@ -40,7 +40,7 @@ function Ocassion()
             </div>
          </div>
       </div>
-      <div className="container">
+      <div className="containerr">
          <div className="cardd">  
             <div className="front">
             <h2>Seasonal events</h2>
