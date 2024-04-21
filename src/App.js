@@ -1,7 +1,7 @@
 
 import './App.css';
 import Login from './components/LoginForm/Login';
-import {BrowserRouter as Router, Routes, Route, BrowserRouter }from "react-router-dom";
+import {BrowserRouter as  Router, Routes, Route, BrowserRouter }from "react-router-dom";
 import Register from './components/RegisterForm/Register';
 import Home from './components/HomeForm/Home'
 import Header from './components/Header/Header';
@@ -16,7 +16,6 @@ import Accessory from './components/Accessory/Accessory';
 import Donation from './components/Donation/Donation';
 import CustomCalendar from './components/Calendar/Calendar';
 import ReactGA from "react-ga4";
-import React, { useEffect } from "react";
 function App() {
   ReactGA.initialize('G-CRTXBT78CZ');
   return (
@@ -24,10 +23,9 @@ function App() {
       <BrowserRouter>
       <Header/>
         <Routes>
-          <Route path="/" element={<Register />}/>
           <Route path="/Register" element={<Register />}/>
           <Route path="/Login" element={<Login />}/>
-          <Route path="/Home" element={<Home />}/>    
+          <Route path="/" element={<Home />}/>    
           <Route path="/Ocassion" element={<Ocassion />}/> 
           <Route path="/ClosetMatching" element={<ClosetMatching />}/>
           <Route path="/ImageGallery" element={<ImageGallery />} />

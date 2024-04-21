@@ -15,7 +15,7 @@ function ClosetMatching() {
           title: "Custom Title",
         });
       });
-    const [selectedButton, setSelectedButton] = useState('Casual Events');
+   const [selectedButton, setSelectedButton] = useState('Casual Events');
     const [showShirtModal, setShowShirtModal] = useState(false);
     const [showPantsModal, setShowPantsModal] = useState(false);
     const [showEthinicModal, setShowEthinicModal] = useState(false);
@@ -69,7 +69,7 @@ function ClosetMatching() {
 
     const handleTakePictureClick = async () => {
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            //const stream = await navigator.mediaDevices.getUserMedia({ video: true });
             // You can do further processing with the camera stream here
             console.log('Camera opened');
         } catch (error) {

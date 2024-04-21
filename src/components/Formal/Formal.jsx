@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 function Formal() {
-    const category = "Formal";
     const navigate = useNavigate();
     const handleButtonClick = (route) => {
         setSelectedButton(route);
