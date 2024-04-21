@@ -13,7 +13,7 @@ function Ocassion() {
     ReactGA.send({
       hitType: "pageview",
       page: window.location.pathname,
-      title: "Custom Title",
+      title: "Ocassion",
     });
   });
   return (

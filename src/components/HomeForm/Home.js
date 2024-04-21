@@ -4,8 +4,17 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { productData } from './data';
 import Product from './Product';
+import ReactGA from "react-ga4";
+import { useEffect } from 'react';
 
 function Home(props) {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "home",
+    });
+  })
   const product = productData.map((item) => (
     <Product
       key={item.id} // Unique key for each Product component

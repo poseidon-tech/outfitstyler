@@ -8,7 +8,7 @@ const DonationPage = () => {
     ReactGA.send({
       hitType: "pageview",
       page: window.location.pathname,
-      title: "Custom Title",
+      title: "donation",
     });
   });
   return (

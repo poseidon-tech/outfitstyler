@@ -13,7 +13,7 @@ function Accessory(props) {
         ReactGA.send({
           hitType: "pageview",
           page: window.location.pathname,
-          title: "Custom Title",
+          title: "Accessories",
         });
       });
     const [imageIndex, setImageIndex] = useState(0);

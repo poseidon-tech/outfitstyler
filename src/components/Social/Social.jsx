@@ -5,11 +5,19 @@ import image3 from './image2.png'
 import image4 from './image2.png'
 import image5 from './image2.png';
 import { useNavigate } from 'react-router-dom';
-
+import ReactGA from "react-ga4";
+import { useEffect } from 'react';
 
 import React, { useState } from 'react';
 
 function Social() {
+    useEffect(() => {
+        ReactGA.send({
+          hitType: "pageview",
+          page: window.location.pathname,
+          title: "Social",
+        });
+      });
     const navigate = useNavigate();
     const handleButtonClick = (route) => {
         setSelectedButton(route);

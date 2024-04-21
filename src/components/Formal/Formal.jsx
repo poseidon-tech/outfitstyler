@@ -1,11 +1,19 @@
 import './Formal.css';
 import image1 from './image.png';
 import image2 from './image2.png';
-
+import ReactGA from "react-ga4";
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 function Formal() {
+    useEffect(() => {
+        ReactGA.send({
+          hitType: "pageview",
+          page: window.location.pathname,
+          title: "formal",
+        });
+      });
     const navigate = useNavigate();
     const handleButtonClick = (route) => {
         setSelectedButton(route);

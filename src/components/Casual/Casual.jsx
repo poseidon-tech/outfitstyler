@@ -2,8 +2,17 @@ import './Casual.css';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactGA from "react-ga4";
+import { useEffect} from 'react';
 
 function Casual() {
+    useEffect(() => {
+        ReactGA.send({
+          hitType: "pageview",
+          page: window.location.pathname,
+          title: "Casual",
+        });
+      });
     const navigate = useNavigate();
     const handleButtonClick = (route) => {
         setSelectedButton(route);

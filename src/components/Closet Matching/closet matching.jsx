@@ -12,7 +12,7 @@ function ClosetMatching() {
         ReactGA.send({
           hitType: "pageview",
           page: window.location.pathname,
-          title: "Custom Title",
+          title: "closet matching",
         });
       });
    const [selectedButton, setSelectedButton] = useState('Casual Events');

@@ -5,10 +5,17 @@ import image3 from './image2.png'
 import image4 from './image2.png'
 import image5 from './image2.png'
 import { useNavigate } from 'react-router-dom';
-
-import React, { useState } from 'react';
+import ReactGA from "react-ga4";
+import React, { useEffect,useState} from 'react';
 
 function Seasonal() {
+    useEffect(() => {
+        ReactGA.send({
+          hitType: "pageview",
+          page: window.location.pathname,
+          title: "Seasonal",
+        });
+      });
     const navigate = useNavigate();
     const handleButtonClick = (route) => {
         setSelectedButton(route);
