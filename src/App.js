@@ -17,7 +17,7 @@ import Donation from './components/Donation/Donation';
 import CustomCalendar from './components/Calendar/Calendar';
 import ReactGA from "react-ga4";
 function App() {
-  ReactGA.initialize('G-CRTXBT78CZ');
+  ReactGA.initialize('G-W1FQ5BKSJD');
   return (
     <div className="App">
       <BrowserRouter>
