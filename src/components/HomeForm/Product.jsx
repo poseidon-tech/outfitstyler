@@ -8,7 +8,7 @@ export default function Product(props) {
     // Track link click event
     ReactGA.event({
       category: "User Interaction",
-      action: "Clicked Link",
+      action: "Clicked "+ props.name + "Link",
       label: props.name, // Optional
     });}
   return (
