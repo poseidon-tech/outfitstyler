@@ -20,9 +20,9 @@ export const productData = [
     {
       id: 3,
       imageurl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVjzS_ZDDmaQm3kPCT7so2otuDCzTaOat8Iw&usqp=CAU",
-      name: "VibeMatcher",
-      price: "Outfit suggestions tailored to match your moods",
-      url:"/Accessory"
+      name: "Donate",
+      price: "Give away clothing items that are no longer needed",
+      url:"/Donation"
 
     },
     {

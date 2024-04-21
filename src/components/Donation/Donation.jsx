@@ -1,8 +1,16 @@
 import React from 'react';
 import image1 from './image.png';
 import './Donation.css';
-
+import ReactGA from "react-ga4";
+import { useEffect } from 'react';
 const DonationPage = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "Custom Title",
+    });
+  });
   return (
     <div className="donation-page">
       <main>

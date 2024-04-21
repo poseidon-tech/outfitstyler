@@ -3,11 +3,19 @@ import image1 from './image.png';
 import image2 from './image2.png';
 import image3 from './image3.png';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
+import ReactGA from "react-ga4";
 
 
 
 function Accessory(props) {
+    useEffect(() => {
+        ReactGA.send({
+          hitType: "pageview",
+          page: window.location.pathname,
+          title: "Custom Title",
+        });
+      });
     const [imageIndex, setImageIndex] = useState(0);
     const [imageSrc, setImageSrc] = useState([]);
     const location = useLocation();

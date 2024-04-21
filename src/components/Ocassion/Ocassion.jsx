@@ -4,9 +4,18 @@ import image2 from './image-2.png'
 import image3 from './image-3.png'
 import image4 from './image-4.png'
 import { Link } from "react-router-dom";
-import Calendar from '../Calendar/Calendar'
+import Calendar from '../Calendar/Calendar';
+import ReactGA from "react-ga4";
+import { useEffect } from 'react'
 
 function Ocassion() {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "Custom Title",
+    });
+  });
   return (
     <div className="c1">
       <Calendar />

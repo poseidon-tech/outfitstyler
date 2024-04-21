@@ -15,8 +15,10 @@ import Casual from './components/Casual/Casual';
 import Accessory from './components/Accessory/Accessory';
 import Donation from './components/Donation/Donation';
 import CustomCalendar from './components/Calendar/Calendar';
-
+import ReactGA from "react-ga4";
+import React, { useEffect } from "react";
 function App() {
+  ReactGA.initialize('G-CRTXBT78CZ');
   return (
     <div className="App">
       <BrowserRouter>

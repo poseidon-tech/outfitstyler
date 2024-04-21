@@ -5,8 +5,16 @@ import PantsModal from './pantsmodal';
 import EthinicModal from './ethinicmodal'; 
 import CasualModal from './casualmodal';
 import BussinessModal from './bussinessmodal'; // Import BussinessModal
-
+import ReactGA from "react-ga4";
+import { useEffect } from 'react'
 function ClosetMatching() {
+    useEffect(() => {
+        ReactGA.send({
+          hitType: "pageview",
+          page: window.location.pathname,
+          title: "Custom Title",
+        });
+      });
     const [selectedButton, setSelectedButton] = useState('Casual Events');
     const [showShirtModal, setShowShirtModal] = useState(false);
     const [showPantsModal, setShowPantsModal] = useState(false);
