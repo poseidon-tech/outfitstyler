@@ -25,6 +25,11 @@ function Formal() {
     const [imageSrc, setImageSrc] = useState(set1[0]); // Initialize with the first image
 
     const handleGenerateOutfitClick = () => {
+        ReactGA.event({
+            category: "User Interaction",
+            action: "Clicked formal-Generate Other outfit Link",
+            label:  "formal" // Optional
+          });
         setImageIndex((imageIndex + 1) % set1.length); // Increment image index
         setImageSrc(set1[imageIndex]); // Set image source based on the new index
     };

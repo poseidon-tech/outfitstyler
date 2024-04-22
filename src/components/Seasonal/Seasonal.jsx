@@ -24,6 +24,11 @@ function Seasonal() {
     const [selectedButton, setSelectedButton] = useState('Seasonal Events');
     const [imageSrc, setImageSrc] = useState(image1);
     const handleGenerateOutfitClick = () => {
+        ReactGA.event({
+            category: "User Interaction",
+            action: "Clicked Seasonal-Generate Other outfit Link",
+            label:  "Seasonal", // Optional
+          });
         setImageSrc(image2);
     };
 

@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import React, { useState } from 'react';
 
 function Social() {
+    
     useEffect(() => {
         ReactGA.send({
           hitType: "pageview",
@@ -25,7 +26,13 @@ function Social() {
     };
     const [selectedButton, setSelectedButton] = useState('Special Occasions');
     const [imageSrc, setImageSrc] = useState(image1);
-    const handleGenerateOutfitClick = () => {
+    const handleGenerateOutfitClick = () => { 
+            // Track link click event
+            ReactGA.event({
+              category: "User Interaction",
+              action: "Clicked Social-Generate Other outfit Link",
+              label:  "social", // Optional
+            });
         setImageSrc(image2);
     };
 

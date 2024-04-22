@@ -21,6 +21,11 @@ function Casual() {
     const [selectedButton, setSelectedButton] = useState('Casual Events');
     const [imageSrc, setImageSrc] = useState();
     const handleGenerateOutfitClick = () => {
+        ReactGA.event({
+            category: "User Interaction",
+            action: "Clicked Casual-Generate Other outfit Link",
+            label:  "casual"
+          });
         setImageSrc();
     };
 

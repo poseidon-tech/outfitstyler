@@ -37,8 +37,8 @@ function Header()
         </span>
         <span className='menu-icon' onClick={handleMenuToggle}>{isMenuOpen ? <IoIosCloseCircle size={30}/>:<GiHamburgerMenu size={30}/>}</span>
         <ul className={`navlinks ${isMenuOpen ? 'mobile' : ''}`} >
-            <Link to="/Home"><li><FaHome/>Home</li></Link>
-            <Link to=""><li><GiTravelDress/>Wardrobe</li></Link>
+            <Link to="/"><li><FaHome/>Home</li></Link>
+            <Link to="ClosetMatching"><li><GiTravelDress/>Wardrobe</li></Link>
             <Link to=""><li><FaUpload/>Upload</li></Link>
             <Link to=""><li><CgProfile/>Profile</li></Link>
             <Link to=""><li><CiLogin/>Logout</li></Link>         
