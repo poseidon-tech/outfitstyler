@@ -1,8 +1,5 @@
-
 import './App.css';
-import Login from './components/LoginForm/Login';
 import {BrowserRouter as  Router, Routes, Route, BrowserRouter }from "react-router-dom";
-import Register from './components/RegisterForm/Register';
 import Home from './components/HomeForm/Home'
 import Header from './components/Header/Header';
 import Ocassion from './components/Ocassion/Ocassion';
@@ -14,18 +11,20 @@ import Seasonal from './components/Seasonal/Seasonal';
 import Casual from './components/Casual/Casual';
 import Accessory from './components/Accessory/Accessory';
 import Donation from './components/Donation/Donation';
-import CustomCalendar from './components/Calendar/Calendar';
 import ReactGA from "react-ga4";
+import CustomCalendar from './components/Calendar/Calendar'
+import LoginPage from './components/Login/LoginPage';
+import { AuthProvider } from './components/Auth/AuthContext';
+import Vibe from './components/Vibe/Vibe';
 function App() {
   ReactGA.initialize('G-W1FQ5BKSJD');
   return (
+    <AuthProvider>
     <div className="App">
       <BrowserRouter>
       <Header/>
         <Routes>
-          <Route path="/Register" element={<Register />}/>
-          <Route path="/Login" element={<Login />}/>
-          <Route path="/" element={<Home />}/>    
+          <Route path="/Login" element={<LoginPage />}/>
           <Route path="/Ocassion" element={<Ocassion />}/> 
           <Route path="/ClosetMatching" element={<ClosetMatching />}/>
           <Route path="/ImageGallery" element={<ImageGallery />} />
@@ -34,11 +33,16 @@ function App() {
           <Route path="/Seasonal" element={<Seasonal/>}/>
           <Route path="/Social" element={<Social/>}/>
           <Route path="/Accessory" element={<Accessory/>}/>
-          <Route path="/Calendar" element={<CustomCalendar/>}/>
           <Route path="/Donation" element={<Donation/>}/>
+          <Route path="/CustomCalendar" element={<CustomCalendar/>}/>
+          <Route path="/vibe" element={<Vibe/>}/>
+          <Route path="/" element={<Home />}/>    
+          
         </Routes>
       </BrowserRouter>
-    </div>
+      </div>
+      </AuthProvider>
+    
   );
 }
 

@@ -1,22 +1,60 @@
 import './Social.css';
-import image1 from './image.png';
-import image2 from './image2.png'
-import image3 from './image2.png'
-import image4 from './image2.png'
-import image5 from './image2.png';
-import { useNavigate } from 'react-router-dom';
+import image1 from './image1.jpg';
+import image2 from './image2.jpg';
+import image3 from './image3.jpg';
 import ReactGA from "react-ga4";
 import { useEffect } from 'react';
-
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import Button from '@mui/material/Button';
+import BlindIcon from '@mui/icons-material/Blind';
+import IconButton from '@mui/material/IconButton';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+
 
 function Social() {
-    
+    const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+  const handleSubmitFeedback = async () => { // Note the async keyword here
+    try {
+      // Start the wait process
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // waits for 3 seconds
+  
+      // After the wait, show the Snackbar
+      setOpenSnackbar(true);
+    } catch (error) {
+      // Handle any possible errors that might come from your wait logic
+      console.error(error);
+    } finally {
+      // This will run regardless of whether the above try/catch succeeded or failed
+      // Close the dialog
+      setOpen(false);
+    }
+  };
+  
+  
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
     useEffect(() => {
         ReactGA.send({
           hitType: "pageview",
           page: window.location.pathname,
-          title: "Social",
+          title: "formal",
         });
       });
     const navigate = useNavigate();
@@ -24,16 +62,19 @@ function Social() {
         setSelectedButton(route);
         navigate(route);
     };
+    const set1 = [image1, image2, image3];
+    const [imageIndex, setImageIndex] = useState(0);
     const [selectedButton, setSelectedButton] = useState('Special Occasions');
-    const [imageSrc, setImageSrc] = useState(image1);
-    const handleGenerateOutfitClick = () => { 
-            // Track link click event
-            ReactGA.event({
-              category: "User Interaction",
-              action: "Clicked Social-Generate Other outfit Link",
-              label:  "social", // Optional
-            });
-        setImageSrc(image2);
+    const [imageSrc, setImageSrc] = useState(set1[0]); // Initialize with the first image
+
+    const handleGenerateOutfitClick = () => {
+        ReactGA.event({
+            category: "User Interaction",
+            action: "Clicked formal-Generate Other outfit Link",
+            label:  "formal" // Optional
+          });
+        setImageIndex((imageIndex + 1) % set1.length); // Increment image index
+        setImageSrc(set1[imageIndex]); // Set image source based on the new index
     };
 
     return(
@@ -51,8 +92,79 @@ function Social() {
             </div>
             <div className="col3">
                 <button onClick={handleGenerateOutfitClick}>Generate another Outfit</button>
-                <button>Add Accessories to your Outfit</button>
+                <Link to="/Accessory" state={{ category: "Social" , image: imageSrc }}>
+                    <button>Add Accessories to your Outfit</button>
+                </Link>
             </div>
+            <IconButton
+        onClick={handleClickOpen}
+        sx={{
+          position: 'fixed',
+          bottom: 30,
+          right: 10,
+          border: '1px solid #ddd', // Add a border with your desired color and width
+          borderRadius: '50%', // Make it round
+          backgroundColor: 'white', // Optional: set a background color
+          '&:hover': {
+            backgroundColor: 'grey.200', // Change the background color on hover
+          },
+          // Use the theme's spacing to increase the size
+          height: theme => theme.spacing(8),
+          width: theme => theme.spacing(8),
+        }}
+      >
+        <RateReviewIcon fontSize="large" />
+      
+       
+      </IconButton><Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
+        <DialogTitle>Feedback</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="How suitable were the outfit suggestions for social occasions like parties or gatherings? Rate the appropriateness on a scale of 1 to 10."
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Did the outfit suggestions align with current social trends or your personal sense of social style? Please share any feedback on specific suggestions that were particularly appealing or disappointing"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="What specific suggestions or changes would you recommend to enhance the outfit recommendations for social occasions?"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button  onClick= {handleSubmitFeedback}>Submit</Button>
+        </DialogActions>
+        
+      </Dialog>
+      <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          onClose={handleCloseSnackbar}
+          message="Feedback submitted successfully"
+          action={
+            <Button color="secondary" size="small" onClick={handleCloseSnackbar}>
+              Close
+            </Button>
+          }
+        />
         </div>
     );
 }

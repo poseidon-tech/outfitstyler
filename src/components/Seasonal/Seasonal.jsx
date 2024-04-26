@@ -1,19 +1,60 @@
 import './Seasonal.css';
-import image1 from './image.png';
-import image2 from './image2.png'
-import image3 from './image2.png'
-import image4 from './image2.png'
-import image5 from './image2.png'
-import { useNavigate } from 'react-router-dom';
+import image1 from './image1.jpg';
+import image2 from './image2.jpg';
+import image3 from './image3.jpg';
 import ReactGA from "react-ga4";
-import React, { useEffect,useState} from 'react';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import Button from '@mui/material/Button';
+import BlindIcon from '@mui/icons-material/Blind';
+import IconButton from '@mui/material/IconButton';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+
 
 function Seasonal() {
+    const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+  const handleSubmitFeedback = async () => { // Note the async keyword here
+    try {
+      // Start the wait process
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // waits for 3 seconds
+  
+      // After the wait, show the Snackbar
+      setOpenSnackbar(true);
+    } catch (error) {
+      // Handle any possible errors that might come from your wait logic
+      console.error(error);
+    } finally {
+      // This will run regardless of whether the above try/catch succeeded or failed
+      // Close the dialog
+      setOpen(false);
+    }
+  };
+  
+  
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
     useEffect(() => {
         ReactGA.send({
           hitType: "pageview",
           page: window.location.pathname,
-          title: "Seasonal",
+          title: "formal",
         });
       });
     const navigate = useNavigate();
@@ -21,15 +62,19 @@ function Seasonal() {
         setSelectedButton(route);
         navigate(route);
     };
+    const set1 = [image1, image2, image3];
+    const [imageIndex, setImageIndex] = useState(0);
     const [selectedButton, setSelectedButton] = useState('Seasonal Events');
-    const [imageSrc, setImageSrc] = useState(image1);
+    const [imageSrc, setImageSrc] = useState(set1[0]); // Initialize with the first image
+
     const handleGenerateOutfitClick = () => {
         ReactGA.event({
             category: "User Interaction",
-            action: "Clicked Seasonal-Generate Other outfit Link",
-            label:  "Seasonal", // Optional
+            action: "Clicked formal-Generate Other outfit Link",
+            label:  "formal" // Optional
           });
-        setImageSrc(image2);
+        setImageIndex((imageIndex + 1) % set1.length); // Increment image index
+        setImageSrc(set1[imageIndex]); // Set image source based on the new index
     };
 
     return(
@@ -47,8 +92,79 @@ function Seasonal() {
             </div>
             <div className="col3">
                 <button onClick={handleGenerateOutfitClick}>Generate another Outfit</button>
-                <button>Add Accessories to your Outfit</button>
+                <Link to="/Accessory" state={{ category: "Seasonal" , image: imageSrc }}>
+                    <button>Add Accessories to your Outfit</button>
+                </Link>
             </div>
+            <IconButton
+        onClick={handleClickOpen}
+        sx={{
+          position: 'fixed',
+          bottom: 30,
+          right: 10,
+          border: '1px solid #ddd', // Add a border with your desired color and width
+          borderRadius: '50%', // Make it round
+          backgroundColor: 'white', // Optional: set a background color
+          '&:hover': {
+            backgroundColor: 'grey.200', // Change the background color on hover
+          },
+          // Use the theme's spacing to increase the size
+          height: theme => theme.spacing(8),
+          width: theme => theme.spacing(8),
+        }}
+      >
+        <RateReviewIcon fontSize="large" />
+      
+       
+      </IconButton><Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
+        <DialogTitle>Feedback</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="How well did the outfit suggestions match the expected weather conditions for the selected seasonal occasion? Please rate on a scale of 1 to 10"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Did the suggested outfits reflect the seasonal themes or trends that you expected? Please share any particular outfit suggestions that stood out to you."
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="What additional elements would make the outfit recommendations better suited for the selected season?"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button  onClick= {handleSubmitFeedback}>Submit</Button>
+        </DialogActions>
+        
+      </Dialog>
+      <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          onClose={handleCloseSnackbar}
+          message="Feedback submitted successfully"
+          action={
+            <Button color="secondary" size="small" onClick={handleCloseSnackbar}>
+              Close
+            </Button>
+          }
+        />
         </div>
     );
 }
