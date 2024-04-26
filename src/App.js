@@ -16,6 +16,13 @@ import CustomCalendar from './components/Calendar/Calendar'
 import LoginPage from './components/Login/LoginPage';
 import { AuthProvider } from './components/Auth/AuthContext';
 import Vibe from './components/Vibe/Vibe';
+import Walk from './components/Walk/Walk';
+import Arcade from './components/Arcade/Arcade'
+import Coffee from './components/Coffee/Coffee';
+import Lounge from './components/Lounge/Lounge';
+import Beach from './components/Beach/Beach';
+import Brunch from './components/Brunch/Brunch'
+import Hike from './components/Hike/Hike';
 function App() {
   ReactGA.initialize('G-W1FQ5BKSJD');
   return (
@@ -35,6 +42,13 @@ function App() {
           <Route path="/Accessory" element={<Accessory/>}/>
           <Route path="/Donation" element={<Donation/>}/>
           <Route path="/CustomCalendar" element={<CustomCalendar/>}/>
+          <Route path="/Walk" element={<Walk/>}/>
+          <Route path="/Arcade" element={<Arcade/>}/>
+          <Route path="/Coffee" element={<Coffee/>}/>
+          <Route path="/Hike" element={<Hike/>}/>
+          <Route path="/Lounge" element={<Lounge/>}/>
+          <Route path="/Beach" element={<Beach/>}/>
+          <Route path="/Brunch" element={<Brunch/>}/>
           <Route path="/vibe" element={<Vibe/>}/>
           <Route path="/" element={<Home />}/>    
           

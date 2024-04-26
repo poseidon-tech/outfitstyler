@@ -11,13 +11,26 @@ import Snackbar from '@mui/material/Snackbar';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import Button from '@mui/material/Button';
 import BlindIcon from '@mui/icons-material/Blind';
-import IconButton from '@mui/material/IconButton';
 import RateReviewIcon from '@mui/icons-material/RateReview';
-
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 
 
 function Formal() {
+  const [openPopover, setOpenPopover] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handlePopoverClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpenPopover(!openPopover); // Toggle the popover
+  };
+  
+  const handlePopoverClose = () => {
+    setOpenPopover(false);
+    setAnchorEl(null); // Reset the anchor element
+  };
     const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -90,7 +103,37 @@ function Formal() {
             </div>
             <div className="col2">
                 <h2>Generated outfit</h2>
+                <div style={{ position: 'relative' }}> {/* Make the parent relative */}
                 <img className="imgg" src={imageSrc} alt="Generated outfit" />
+                <IconButton
+    style={{
+      position: 'absolute', // Place the icon on top
+      top: 10, // Position from the top
+      right: 10, // Position from the right
+      backgroundColor: 'rgba(255, 255, 255, 0.7)', // Transparent white background
+    }}
+    onClick={handlePopoverClick} // Trigger the popover on click
+  >
+    <InfoIcon />
+  </IconButton>
+  <Popover
+    open={openPopover}
+    anchorEl={anchorEl}
+    onClose={handlePopoverClose}
+    anchorOrigin={{
+      vertical: 'bottom', // Position the popover below the icon
+      horizontal: 'right',
+    }}
+    transformOrigin={{
+      vertical: 'top', // Align the popover
+      horizontal: 'right',
+    }}
+  >
+    <Typography sx={{ p: 2 }}> {/* Content inside the popover */}
+    This recommendation is based on the dress code requirements and expectations for formality.
+    </Typography>
+  </Popover>
+            </div>
             </div>
             <div className="col3">
                 <button onClick={handleGenerateOutfitClick}>Generate another Outfit</button>

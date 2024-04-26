@@ -13,9 +13,25 @@ import Button from '@mui/material/Button';
 import BlindIcon from '@mui/icons-material/Blind';
 import IconButton from '@mui/material/IconButton';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import InfoIcon from '@mui/icons-material/Info';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
 
 
 function Social() {
+  const [openPopover, setOpenPopover] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handlePopoverClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpenPopover(!openPopover); // Toggle the popover
+  };
+  
+  const handlePopoverClose = () => {
+    setOpenPopover(false);
+    setAnchorEl(null); // Reset the anchor element
+  };
+  
     const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -24,6 +40,7 @@ function Social() {
 
   const handleClose = () => {
     setOpen(false);
+
   };
     const [openSnackbar, setOpenSnackbar] = useState(false);
   const handleSubmitFeedback = async () => { // Note the async keyword here
@@ -88,7 +105,37 @@ function Social() {
             </div>
             <div className="col2">
                 <h2>Generated outfit</h2>
-                <img className="imgg" src={imageSrc} alt="Generated outfit"/>
+                <div style={{ position: 'relative' }}> {/* Make the parent relative */}
+  <img className="imgg" src={imageSrc} alt="Generated outfit" />
+  <IconButton
+    style={{
+      position: 'absolute', // Place the icon on top
+      top: 10, // Position from the top
+      right: 10, // Position from the right
+      backgroundColor: 'rgba(255, 255, 255, 0.7)', // Transparent white background
+    }}
+    onClick={handlePopoverClick} // Trigger the popover on click
+  >
+    <InfoIcon />
+  </IconButton>
+  <Popover
+            open={openPopover}
+            anchorEl={anchorEl}
+            onClose={handlePopoverClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <Typography sx={{ p: 2 }}>
+            The suggestion is based on a balance between creativity and social norms.
+            </Typography>
+          </Popover>
+        </div>
             </div>
             <div className="col3">
                 <button onClick={handleGenerateOutfitClick}>Generate another Outfit</button>

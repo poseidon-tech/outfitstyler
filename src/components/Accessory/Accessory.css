@@ -85,3 +85,7 @@
     width: 100%; /* Make the button fill its container */
     height: 50px; /* Set a fixed height for the button */
 }
+.q
+{
+    size:10px;
+}

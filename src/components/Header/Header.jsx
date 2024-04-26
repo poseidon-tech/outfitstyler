@@ -9,6 +9,8 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoIosCloseCircle } from 'react-icons/io';
 import { AuthContext } from '../Auth/AuthContext'; 
 import { CiLogout } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom';
+
 
 import './Header.css';
 
@@ -33,10 +35,15 @@ function Header() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const navigate = useNavigate();
+  const handleclick = () => {
+      navigate('/'); // Navigate to home page
+   
+  };
 
   return (
     <div className="navbar">
-      <span className="website-name">OutfitStyler<sub>.com</sub></span>
+      <span className="website-name" onClick={handleclick}>OutfitStyler<sub>.com</sub></span>
       <span className="menu-icon" onClick={handleMenuToggle}>
         {isMenuOpen ? <IoIosCloseCircle size={30} /> : <GiHamburgerMenu size={30} />}
       </span>
